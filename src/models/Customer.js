@@ -3,11 +3,9 @@
  * Status values are sourced from shared-business-rules/CustomerStatusRules.js
  */
 
-export const CustomerStatus = {
-  ACTIVE: 'ACTIVE',
-  INACTIVE: 'INACTIVE',
-  PREMIUM: 'PREMIUM',
-};
+import { CustomerStatus } from '../../../shared-business-rules/CustomerStatusRules.js';
+
+export { CustomerStatus };
 
 /**
  * @typedef {Object} Customer
