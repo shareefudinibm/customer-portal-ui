@@ -15,7 +15,7 @@ const thStyle = {
 const tdStyle = { padding: '10px 12px', borderBottom: '1px solid #e5e7eb', color: '#1f2328' };
 
 /**
- * CustomerTable — renders a filterable list of customers.
+ * CustomerTable — renders a filterable list of customers. 
  *
  * @param {{ customers: Customer[], searchQuery: string }} props
  */
