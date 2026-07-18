@@ -38,8 +38,7 @@ src/
 ├── services/
 │   └── customerApi.js
 ├── models/
-│   ├── Customer.js
-│   └── mockCustomers.js
+│   └── Customer.js
 ├── hooks/
 │   └── useCustomers.js
 └── App.jsx

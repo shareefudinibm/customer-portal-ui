@@ -1,11 +1,9 @@
 /**
  * Customer model — mirrors the backend Customer entity.
- * Status values are sourced from shared-business-rules/CustomerStatusRules.js
+ * Status values are sourced from ./CustomerStatusRules.js
  */
 
-import { CustomerStatus } from '../../../shared-business-rules/CustomerStatusRules.js';
-
-export { CustomerStatus };
+export { CustomerStatus } from './CustomerStatusRules.js';
 
 /**
  * @typedef {Object} Customer

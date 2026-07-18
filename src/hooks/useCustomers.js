@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import customerApi from '../services/customerApi';
-import mockCustomers from '../models/mockCustomers';
 
 /**
  * useCustomers — fetches the full customer list.
@@ -19,10 +18,11 @@ function useCustomers() {
       .then((data) => {
         if (!cancelled) setCustomers(data);
       })
-      .catch(() => {
+      .catch((err) => {
         if (!cancelled) {
-          setCustomers(mockCustomers);
-          setError('API unavailable — showing mock data.');
+          setCustomers([]);
+          setError('API unavailable — please start the API and refresh.');
+          console.error('Failed to fetch customers:', err && err.message ? err.message : err);
         }
       })
       .finally(() => {
