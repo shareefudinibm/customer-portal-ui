@@ -72,9 +72,11 @@ function CustomerTable({ customers, searchQuery, sortConfig, onSort }) {
   const sortedCustomers = [...filtered].sort((a, b) => {
     if (!sortConfig?.key) return 0;
 
-    const left = a[sortConfig.key].toLowerCase();
-    const right = b[sortConfig.key].toLowerCase();
+    const left = String(a[sortConfig.key] ?? '').toLowerCase();
+    const right = String(b[sortConfig.key] ?? '').toLowerCase();
     const comparison = left.localeCompare(right);
+
+    if (comparison === 0) return 0;
 
     return sortConfig.direction === 'desc' ? -comparison : comparison;
   });
@@ -95,7 +97,10 @@ function CustomerTable({ customers, searchQuery, sortConfig, onSort }) {
       <thead>
         <tr>
           <th style={thStyle}>ID</th>
-          <th style={thStyle} aria-sort={nameSortActive ? (sortConfig.direction === 'asc' ? 'ascending' : 'descending') : 'none'}>
+          <th
+            style={thStyle}
+            aria-sort={nameSortActive ? (sortConfig.direction === 'asc' ? 'ascending' : 'descending') : 'none'}
+          >
             <button
               type="button"
               onClick={() => onSort('name')}
@@ -111,7 +116,10 @@ function CustomerTable({ customers, searchQuery, sortConfig, onSort }) {
               </span>
             </button>
           </th>
-          <th style={thStyle} aria-sort={emailSortActive ? (sortConfig.direction === 'asc' ? 'ascending' : 'descending') : 'none'}>
+          <th
+            style={thStyle}
+            aria-sort={emailSortActive ? (sortConfig.direction === 'asc' ? 'ascending' : 'descending') : 'none'}
+          >
             <button
               type="button"
               onClick={() => onSort('email')}
