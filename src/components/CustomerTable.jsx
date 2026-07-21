@@ -54,11 +54,6 @@ const getSortIndicator = (isActive, direction) => {
   return direction === 'asc' ? '↑' : '↓';
 };
 
-/**
- * CustomerTable — renders a filterable and sortable list of customers.
- *
- * @param {{ customers: Customer[], searchQuery: string, sortConfig: { key: string, direction: string }, onSort: (key: string) => void }} props
- */
 function CustomerTable({ customers, searchQuery, sortConfig, onSort }) {
   const filtered = customers.filter((c) => {
     const q = searchQuery.toLowerCase();
@@ -139,7 +134,6 @@ function CustomerTable({ customers, searchQuery, sortConfig, onSort }) {
         </tr>
       </thead>
       <tbody>
-        {sortedCustomers.map((c) => (
           <tr key={c.id}>
             <td style={tdStyle}>{c.id}</td>
             <td style={tdStyle}>{c.name}</td>
