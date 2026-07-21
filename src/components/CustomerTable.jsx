@@ -15,26 +15,13 @@ const thStyle = {
 const tdStyle = { padding: '10px 12px', borderBottom: '1px solid #e5e7eb', color: '#1f2328' };
 
 /**
- * CustomerTable — renders a filterable list of customers. 
+ * CustomerTable — renders a list of customers.
  *
- * @param {{ customers: Customer[], searchQuery: string }} props
+ * @param {{ customers: Customer[] }} props
  */
-function CustomerTable({ customers, searchQuery }) {
-  const filtered = customers.filter((c) => {
-    const q = searchQuery.toLowerCase();
-    return (
-      c.name.toLowerCase().includes(q) ||
-      c.email.toLowerCase().includes(q) ||
-      c.status.toLowerCase().includes(q)
-    );
-  });
-
-  if (filtered.length === 0) {
-    return (
-      <p style={{ color: '#57606a', padding: '16px 0' }}>
-        No customers match your search.
-      </p>
-    );
+function CustomerTable({ customers }) {
+  if (customers.length === 0) {
+    return <p style={{ color: '#57606a', padding: '16px 0' }}>No customers available.</p>;
   }
 
   return (
@@ -48,7 +35,7 @@ function CustomerTable({ customers, searchQuery }) {
         </tr>
       </thead>
       <tbody>
-        {filtered.map((c) => (
+        {customers.map((c) => (
           <tr key={c.id}>
             <td style={tdStyle}>{c.id}</td>
             <td style={tdStyle}>{c.name}</td>
