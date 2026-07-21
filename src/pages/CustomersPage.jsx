@@ -18,6 +18,20 @@ const inputStyle = {
 function CustomersPage() {
   const { customers, loading, error } = useCustomers();
   const [search, setSearch] = useState('');
+  const [sortConfig, setSortConfig] = useState({ key: 'name', direction: 'asc' });
+
+  const handleSort = (key) => {
+    setSortConfig((currentSort) => {
+      if (currentSort.key === key) {
+        return {
+          key,
+          direction: currentSort.direction === 'asc' ? 'desc' : 'asc',
+        };
+      }
+
+      return { key, direction: 'asc' };
+    });
+  };
 
   if (loading) return <p>Loading customers…</p>;
 
@@ -36,7 +50,12 @@ function CustomersPage() {
         />
       </div>
 
-      <CustomerTable customers={customers} searchQuery={search} />
+      <CustomerTable
+        customers={customers}
+        searchQuery={search}
+        sortConfig={sortConfig}
+        onSort={handleSort}
+      />
     </div>
   );
 }
