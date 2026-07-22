@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import CustomersPage from './pages/CustomersPage';
 import AddCustomerPage from './pages/AddCustomerPage';
+import CustomerDetailsPage from './pages/CustomerDetailsPage';
 
 const navStyle = {
   background: '#1f2328',
@@ -34,9 +35,10 @@ function App() {
       <NavBar />
       <main style={mainStyle}>
         <Routes>
-          <Route path="/"          element={<Dashboard />} />
-          <Route path="/customers" element={<CustomersPage />} />
-          <Route path="/add"       element={<AddCustomerPage />} />
+          <Route path="/"              element={<Dashboard />} />
+          <Route path="/customers"     element={<CustomersPage />} />
+          <Route path="/customers/:id" element={<CustomerDetailsPage />} />
+          <Route path="/add"           element={<AddCustomerPage />} />
         </Routes>
       </main>
     </BrowserRouter>

@@ -14,7 +14,8 @@ React frontend for the Customer Portal — displays and manages customer data so
 | Path | Component | Description |
 |------|-----------|-------------|
 | `/` | `Dashboard` | Metric cards: Total / Active / Premium customers |
-| `/customers` | `CustomersPage` | Searchable customer list with status badges |
+| `/customers` | `CustomersPage` | Searchable customer list with status badges and detail links |
+| `/customers/:id` | `CustomerDetailsPage` | Read-only customer details view for name, email, and status |
 | `/add` | `AddCustomerPage` | Form to create a new customer |
 
 ## Components
@@ -31,6 +32,7 @@ src/
 ├── pages/
 │   ├── Dashboard.jsx
 │   ├── CustomersPage.jsx
+│   ├── CustomerDetailsPage.jsx
 │   └── AddCustomerPage.jsx
 ├── components/
 │   ├── StatusBadge.jsx
