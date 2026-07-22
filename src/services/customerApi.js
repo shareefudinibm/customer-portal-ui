@@ -27,6 +27,14 @@ const customerApi = {
    * @returns {Promise<Customer>}
    */
   create: (payload) => api.post('/api/customers', payload).then((res) => res.data),
+
+  /**
+   * PUT /api/customers/:id
+   * @param {number} id
+   * @param {{ name: string, email: string }} payload
+   * @returns {Promise<Customer>}
+   */
+  update: (id, payload) => api.put(`/api/customers/${id}`, payload).then((res) => res.data),
 };
 
 export default customerApi;
