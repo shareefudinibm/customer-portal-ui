@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import StatusBadge from './StatusBadge';
 
 const tableStyle = { width: '100%', borderCollapse: 'collapse', fontSize: '14px' };
@@ -43,6 +44,7 @@ const srOnlyStyle = {
   border: 0,
 };
 const tdStyle = { padding: '10px 12px', borderBottom: '1px solid #e5e7eb', color: '#1f2328' };
+const detailsLinkStyle = { color: '#0969da', textDecoration: 'none', fontWeight: 600 };
 
 const getNextSortDirectionLabel = (isActive, direction) => {
   if (!isActive) return 'ascending';
@@ -131,6 +133,7 @@ function CustomerTable({ customers, searchQuery, sortConfig, onSort }) {
             </button>
           </th>
           <th style={thStyle}>Status</th>
+          <th style={thStyle}>Details</th>
         </tr>
       </thead>
       <tbody>
@@ -141,6 +144,11 @@ function CustomerTable({ customers, searchQuery, sortConfig, onSort }) {
             <td style={tdStyle}>{c.email}</td>
             <td style={tdStyle}>
               <StatusBadge status={c.status} />
+            </td>
+            <td style={tdStyle}>
+              <Link to={`/customers/${c.id}`} style={detailsLinkStyle}>
+                View details
+              </Link>
             </td>
           </tr>
         ))}

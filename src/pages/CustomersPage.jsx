@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import CustomerTable from '../components/CustomerTable';
 import useCustomers from '../hooks/useCustomers';
 
-
 const inputStyle = {
   padding: '8px 12px',
   border: '1px solid #e5e7eb',
