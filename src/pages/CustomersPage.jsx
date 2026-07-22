@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CustomerTable from '../components/CustomerTable';
 import useCustomers from '../hooks/useCustomers';
 
+
 const inputStyle = {
   padding: '8px 12px',
   border: '1px solid #e5e7eb',
@@ -18,6 +19,15 @@ const inputStyle = {
 function CustomersPage() {
   const { customers, loading, error } = useCustomers();
   const [search, setSearch] = useState('');
+  const [sortConfig, setSortConfig] = useState({ key: 'name', direction: 'asc' });
+
+  const handleSort = (key) => {
+    setSortConfig((prev) =>
+      prev.key === key
+        ? { key, direction: prev.direction === 'asc' ? 'desc' : 'asc' }
+        : { key, direction: 'asc' }
+    );
+  };
 
   if (loading) return <p>Loading customers…</p>;
 
@@ -36,7 +46,7 @@ function CustomersPage() {
         />
       </div>
 
-      <CustomerTable customers={customers} searchQuery={search} />
+      <CustomerTable customers={customers} searchQuery={search} sortConfig={sortConfig} onSort={handleSort} />
     </div>
   );
 }

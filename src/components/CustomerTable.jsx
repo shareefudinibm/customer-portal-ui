@@ -134,6 +134,7 @@ function CustomerTable({ customers, searchQuery, sortConfig, onSort }) {
         </tr>
       </thead>
       <tbody>
+        {sortedCustomers.map((c) => (
           <tr key={c.id}>
             <td style={tdStyle}>{c.id}</td>
             <td style={tdStyle}>{c.name}</td>
